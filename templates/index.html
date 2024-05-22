@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregunta sobre PDF</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Pregunta sobre el Documento PDF</h1>
+        <form method="post" enctype="multipart/form-data">
+            <div>
+                <label for="api_key">Clave API de OpenAI:</label>
+                <input type="text" id="api_key" name="api_key" required>
+            </div>
+            <div>
+                <label for="file">Sube un archivo PDF:</label>
+                <input type="file" id="file" name="file" accept="application/pdf" required>
+            </div>
+            <div>
+                <label for="question">Pregunta:</label>
+                <input type="text" id="question" name="question" required>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+
+        {% if question and answer %}
+        <div class="result">
+            <h2>Pregunta: {{ question }}</h2>
+            <h3>Respuesta: {{ answer }}</h3>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
